@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'barefoot';
+    src: url('../fonts/BabelSans.ttf');
+}
+
+.barefoot {
+	font-family: 'barefoot' !important;
+	font-size: 3em;
+    margin-bottom: 30px;
+    color: #E68200;
+    letter-spacing: 2px;
+}

@@ -1,0 +1,91 @@
+{% extends '../layouts/base.html' %}
+{% block content %}
+    <form method="post" novalidate="novalidate" action="/ingenieros_solares/create">
+        {% csrf_token %}
+        {{ form.ING_ID }}
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h2><i class="icon-edit"></i>Ingenieros Solares</h2>
+                        <a href='/ingenieros_solares' class="btn btn-danger pull-right btn-lg">Volver</a>
+                    </div>
+                    <div class="box-content">
+                        <form class="form-horizontal">
+                            <fieldset class="col-sm-12">
+
+                                <div class="row row-margin">
+                                    <div class="col-md-8">
+											<div class="col-lg-3 col-md-3 green">
+												<span>Nombre Ingeniero</span>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												{{ form.ING_NOMBRE }}
+											</div>
+                                        <div class="col-lg-3 col-md-3">
+												<span class="error">{{ form.ING_NOMBRE.errors.as_text }}</span>
+											</div>
+										</div>
+                                    </div>
+
+                               <div class="row row-margin">
+                                    <div class="col-md-8">
+											<div class="col-lg-3 col-md-3 green">
+												<span>Precio X Dia</span>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												{{ form.ING_PRECIO_DIA }}
+											</div>
+                                        <div class="col-lg-3 col-md-3">
+												<span class="error">{{ form.ING_PRECIO_DIA.errors.as_text }}</span>
+											</div>
+										</div>
+                                    </div>
+
+
+
+                              <div class="row row-margin">
+                                    <div class="col-md-8">
+											<div class="col-lg-3 col-md-3 green">
+												<span>Usuario</span>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												{{ form.usuarios }}
+											</div>
+                                        <div class="col-lg-3 col-md-3">
+												<span class="error">{{ form.usuarios.errors.as_text }}</span>
+											</div>
+										</div>
+                                    </div>
+
+                                 <div class="row row-margin">
+                                    <div class="col-md-8">
+											<div class="col-lg-3 col-md-3 green">
+												<span>Pais</span>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												{{ form.paises }}
+											</div>
+                                        <div class="col-lg-3 col-md-3">
+												<span class="error">{{ form.paises.errors.as_text }}</span>
+											</div>
+										</div>
+                                    </div>
+
+
+
+
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                </div>
+                            </fieldset>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <!--/col-->
+
+        </div>
+
+{% endblock %}

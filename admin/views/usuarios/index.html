@@ -1,0 +1,48 @@
+{% extends '../layouts/base.html' %}
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="box">
+                <div class="box-header" data-original-title="">
+                    <h2><i class="icon-user"></i><span class="break">Usuarios</span></h2>
+                    <a href='/usuarios/create' class="btn btn-primary pull-right btn-lg">Agregar Usuario</a>
+                </div>
+                <div class="box-content">
+                    <table class="table table-striped table-bordered bootstrap-datatable datatable">
+                        <thead role="row" class="tab-header">
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Apellidos</th>
+                            <th>Nombre Usuario</th>
+                            <th>Ingeniero Solar</th>
+                            <th>Acciones</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for u in data %}
+                            <tr>
+
+                                <td>{{ u.id }}</td>
+                                <td>{{ u.nombre }}</td>
+                                <td>{{ u.apellido }}</td>
+                                <td>{{ u.usuario }}</td>
+                                <td>{% if u.rol.id == ing.id %}<i class="icon-ok" style="color:#00a275 !important"></i>{% else %}<i class="icon-remove" style="color:red !important"></i>{% endif %}</td>
+                                <td>
+                                    <a class="btn btn-info" href="/usuarios/edit/{{ u.id }}"><i class="icon-edit"></i></a>
+                                    <a class="btn btn-danger" href="/usuarios/delete/{{ u.id }}"
+                                       onclick="return confirm('Estas Seguro(a) de Eliminar {{ u.usuario }}');"><i class="icon-trash"></i></a>
+                                    {% if u.rol.id != ing.id %}
+                                    <a class="btn btn-warning" title="Asignar paises" href="/usuarios/paises/{{ u.id }}"><i class="icon-sitemap"></i></a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

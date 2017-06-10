@@ -1,0 +1,42 @@
+{% extends '../layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="box">
+                <div class="box-header" data-original-title="">
+                    <h2><i class="icon-user"></i><span class="break">Marcas</span></h2>
+                    <a href='/marcas/create' class="btn btn-primary pull-right btn-lg">Agregar Marca</a>
+                </div>
+                <div class="box-content">
+                    <table class="table table-striped table-bordered bootstrap-datatable datatable">
+                        <thead role="row" class="tab-header">
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Acciones</th>
+                        </tr>
+                         {% csrf_token %}
+                        </thead>
+                        <tbody>
+                        {% for u in data %}
+                            <tr>
+
+                                <td>{{ u.id }}</td>
+                                <td>{{ u.nombre }}</td>
+                                <td>
+                                    <a class="btn btn-info" href="/marcas/edit/{{ u.id }}"><i class="icon-edit"></i></a>
+                                    <a class="btn btn-danger" href="#" onclick="return can_delete('/marcas/can_delete',{{ u.id }},'{{ u.nombre }}','componentes','/marcas/delete/{{ u.id }}')"><i class="icon-trash"></i></a>
+
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

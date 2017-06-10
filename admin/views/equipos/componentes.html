@@ -1,0 +1,86 @@
+{% extends '../layouts/base.html' %}
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="box">
+                <div class="box-header" data-original-title="">
+                    <h2><i class="icon-user"></i><span class="break">Asigne Componentes</span></h2>
+                    <a href='/equipos' class="btn btn-danger pull-right btn-lg">Volver</a>
+                </div>
+                <div class="box-content">
+
+                    <div class="row">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <fieldset class="col-sm-6">
+                                <div class="form-group">
+                                {% if comps_list|length > 0 %}
+                                    <label class="control-label" for="appendedInputButtons">Equipos</label>
+
+                                    <div class="controls">
+
+                                        <div class="input-group">
+                                            <select class="form-control" name="componente">
+                                                {% for e in comps_list %}
+                                                    <option value="{{ e.CO_ID }}">{{ e.CO_NOMBRE }}</option>
+                                                {% endfor %}
+                                            </select>
+										<span class="input-group-btn">
+											<input class="btn btn-info" type="submit" value="Asignar"/>
+										</span>
+                                        </div>
+                                    </div>
+                                 {% else %}
+                                    <div class="alert alert-success" role="success">Todos los componentes estan asignados a este equipo</div>
+                                {% endif %}
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="box">
+                <div class="box-header" data-original-title="">
+                    <h2><i class="icon-user"></i><span class="break">Componentes Asignados</span></h2>
+                </div>
+                <div class="box-content">
+                    <table class="table table-striped table-bordered bootstrap-datatable datatable">
+                        <thead role="row" class="tab-header">
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Acciones</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for u in comps_assign %}
+                            <tr>
+                                <td>{{ u.componente.CO_ID }}</td>
+                                <td>{{ u.componente.CO_NOMBRE }}</td>
+                                <td>
+                                    {% if u.repuesto != 1 %}
+                                    <a class="btn btn-danger" href="/equipos/componentes/delete/{{ EQ_ID }}/{{ u.CO_ID }}"
+                                       onclick="return confirm('Estas Seguro(a) de Eliminar {{ u.CO_NOMBRE }} de esta Comunidad');"><i
+                                            class="icon-trash"></i></a>
+                                    {% else %}
+
+                                         <a href="#" class="btn btn-success">Repuesto Asignado</a>
+
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

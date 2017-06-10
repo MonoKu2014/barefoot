@@ -1,0 +1,151 @@
+{% extends '../layouts/base.html' %}
+{% load static %}
+{% block content %}
+    <input id="id_ing_solar" type="hidden" value="{{ ing.id }}"/>
+    <form method="post" novalidate="novalidate" action="/usuarios/create">
+        {% csrf_token %}
+    {{ form.id }}
+<div class="row">
+				<div class="col-lg-12">
+					<div class="box">
+						<div class="box-header">
+							<h2><i class="icon-edit"></i>Usuario</h2>
+							<a href='/usuarios' class="btn btn-danger pull-right btn-lg">Volver</a>
+						</div>
+						<div class="box-content">
+							<form class="form-horizontal">
+								<fieldset class="col-sm-12">
+                                    <div class="row row-margin">
+                                    <div class="col-md-8">
+											<div class="col-lg-3 col-md-3 green">
+												<span>{{ form.nombre.label }}</span>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												{{ form.nombre }}
+											</div>
+                                        <div class="col-lg-3 col-md-3">
+												<span class="error">{{ form.nombre.errors.as_text }}</span>
+											</div>
+										</div>
+                                    </div>
+
+                                    <div class="row row-margin">
+                                    <div class="col-md-8">
+											<div class="col-lg-3 col-md-3 green">
+												<span>{{ form.apellido.label }}</span>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												{{ form.apellido }}
+											</div>
+                                        <div class="col-lg-3 col-md-3">
+												<span class="error">{{ form.apellido.errors.as_text }}</span>
+											</div>
+										</div>
+                                    </div>
+
+
+                                   <div class="row row-margin">
+                                    <div class="col-md-8">
+											<div class="col-lg-3 col-md-3 green">
+												<span>{{ form.usuario.label }}</span>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												{{ form.usuario }}
+											</div>
+                                        <div class="col-lg-3 col-md-3">
+												<span class="error">{{ form.usuario.errors.as_text }}</span>
+											</div>
+										</div>
+                                    </div>
+
+                                    <div class="row row-margin">
+                                    <div class="col-md-8">
+											<div class="col-lg-3 col-md-3 green">
+												<span>{{ form.password.label }}</span>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												{{ form.password }}
+											</div>
+                                        <div class="col-lg-3 col-md-3">
+												<span class="error">{{ form.password.errors.as_text }}</span>
+											</div>
+										</div>
+                                    </div>
+
+                                   <div class="row row-margin">
+                                    <div class="col-md-8">
+											<div class="col-lg-3 col-md-3 green">
+												<span>{{ form.email.label }}</span>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												{{ form.email }}
+											</div>
+                                        <div class="col-lg-3 col-md-3">
+												<span class="error">{{ form.email.errors.as_text }}</span>
+											</div>
+										</div>
+                                    </div>
+
+
+
+                                   <div class="row row-margin">
+                                    <div class="col-md-8">
+											<div class="col-lg-3 col-md-3 green">
+												<span>Rol</span>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												{{ form.roles }}
+											</div>
+                                        <div class="col-lg-3 col-md-3">
+												<span class="error">{{ form.roles.errors.as_text }}</span>
+											</div>
+										</div>
+                                    </div>
+
+                                    <div class="row row-margin" id="ing_solar_control" style="display: none" >
+                                    <div class="col-md-8">
+											<div class="col-lg-3 col-md-3 green" style="background-color: orange !important">
+												<span>Precio por Dia</span>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												{{ form.ing_precio_dia }}
+											</div>
+                                        <div class="col-lg-3 col-md-3">
+												<span class="error">{{ form.ing_precio_dia.errors.as_text }}</span>
+											</div>
+										</div>
+                                    </div>
+
+                                    <div class="row row-margin">
+                                    <div class="col-md-8">
+											<div class="col-lg-3 col-md-3 green">
+												<span>Pais</span>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												{{ form.paises }}
+											</div>
+                                        <div class="col-lg-3 col-md-3">
+												<span class="error">{{ form.paises.errors.as_text }}</span>
+											</div>
+										</div>
+                                    </div>
+
+
+								  <div class="form-actions">
+									<button type="submit" class="btn btn-primary">Guardar</button>
+								  </div>
+								</fieldset>
+							  </form>
+
+						</div>
+					</div>
+				</div><!--/col-->
+
+			</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+   <script src="{% static 'js/usuarios.js' %}" type="text/javascript"></script>
+{% endblock %}

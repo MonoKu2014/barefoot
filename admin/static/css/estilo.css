@@ -1,0 +1,83 @@
+
+
+.bf {
+    display: inline-block;
+    background: #00a275;
+    color: #fff;
+    padding: 7px;
+    font-weight: bold;
+}
+
+.error{
+
+color: red;
+    font-size: 12px;
+}
+
+.green{
+
+    background-color: #00a275;
+    color: white;
+    padding: 7px;
+
+
+}
+
+.row-margin{
+
+    margin-bottom: 10px;
+}
+
+.datatable thead,.datatable2 thead{
+    
+    background-color: #00a275;
+    color: white;
+
+}
+/*.container .row:first-child{
+ background-color:#00a275 !important;
+}*/
+
+
+.sidebar-nav .main-menu li a,#main-menu-min{
+
+    border-bottom: 0px !important;
+    color: white;
+
+}
+
+.sidebar-nav .main-menu li a i:not(.submenu i){
+
+    border-right-color: #6aad9a !important;
+    height: auto !important;
+}
+
+.sidebar-nav .main-menu li .dropmenu,#salirLink{
+
+    color: white !important;
+
+}
+
+#btn_cambiar{
+
+    background-color: #00a275;
+}
+
+#btn_cambiar:hover{
+
+    background-color: orange;
+}
+
+
+
+/*.sidebar-nav .main-menu li.active a{
+
+    background-color: #ffb450;
+    color: black;
+}*/
+
+
+#sidebar-left{
+background-color: #00a275;
+}
+

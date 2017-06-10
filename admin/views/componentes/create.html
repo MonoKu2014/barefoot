@@ -1,0 +1,132 @@
+{% extends '../layouts/base.html' %}
+{% block content %}
+    <form method="post" novalidate="novalidate" action="/componentes/create">
+        {% csrf_token %}
+        {{ form.CO_ID }}
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h2><i class="icon-edit"></i>Componentes</h2>
+                        <a href='/componentes' class="btn btn-danger pull-right btn-lg">Volver</a>
+                    </div>
+                    <div class="box-content">
+                        <form class="form-horizontal">
+                            <fieldset class="col-sm-12">
+
+
+
+
+                                <div class="row row-margin">
+                                    <div class="col-md-8">
+											<div class="col-lg-3 col-md-3 green">
+												<span>Nombre Componente</span>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												{{ form.CO_NOMBRE }}
+											</div>
+                                        <div class="col-lg-3 col-md-3">
+												<span class="error">{{ form.CO_NOMBRE.errors.as_text }}</span>
+											</div>
+										</div>
+                                    </div>
+
+                                <div class="row row-margin">
+                                    <div class="col-md-8">
+											<div class="col-lg-3 col-md-3 green">
+												<span>Proveedor</span>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												{{ form.proveedores }}
+											</div>
+                                        <div class="col-lg-3 col-md-3">
+												<span class="error">{{ form.proveedores.errors.as_text }}</span>
+											</div>
+										</div>
+                                    </div>
+
+                                <div class="row row-margin">
+                                    <div class="col-md-8">
+											<div class="col-lg-3 col-md-3 green">
+												<span>Tipo C</span>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												{{ form.tipoc }}
+											</div>
+                                        <div class="col-lg-3 col-md-3">
+												<span class="error">{{ form.tipoc.errors.as_text }}</span>
+											</div>
+										</div>
+                                    </div>
+
+                               <div class="row row-margin">
+                                    <div class="col-md-8">
+											<div class="col-lg-3 col-md-3 green">
+												<span>Marca</span>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												{{ form.marcas }}
+											</div>
+                                        <div class="col-lg-3 col-md-3">
+												<span class="error">{{ form.marcas.errors.as_text }}</span>
+											</div>
+										</div>
+                                    </div>
+
+                                <div class="row row-margin">
+                                    <div class="col-md-8">
+											<div class="col-lg-3 col-md-3 green">
+												<span>Precio</span>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												{{ form.CO_PRECIO }}
+											</div>
+                                        <div class="col-lg-3 col-md-3">
+												<span class="error">{{ form.CO_PRECIO.errors.as_text }}</span>
+											</div>
+										</div>
+                                    </div>
+
+                                <div class="row row-margin">
+                                    <div class="col-md-8">
+											<div class="col-lg-3 col-md-3 green">
+												<span>Nª Componentes</span>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												<input class="form-control" type="text" value="{{ count }}" disabled="disabled"/>
+											</div>
+
+                                    </div>
+                                    </div>
+
+
+                                <div class="row row-margin">
+                                    <div class="col-md-8">
+											<div class="col-lg-3 col-md-3 green">
+												<span>Nª Repuestos</span>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												<input class="form-control" type="text" value="{{ countr }}" disabled="disabled"/>
+											</div>
+
+                                    </div>
+                                    </div>
+
+
+
+
+
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                </div>
+                            </fieldset>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <!--/col-->
+
+        </div>
+
+{% endblock %}

@@ -1,0 +1,140 @@
+{% extends '../layouts/base.html' %}
+{% block content %}
+    <form method="post" novalidate="novalidate" action="/proveedores/create">
+        {% csrf_token %}
+        {{ form.PV_ID }}
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h2><i class="icon-edit"></i>Proveedores</h2>
+                        <a href='/proveedores' class="btn btn-danger pull-right btn-lg">Volver</a>
+                    </div>
+                    <div class="box-content">
+                        <form class="form-horizontal">
+                            <fieldset class="col-sm-12">
+
+
+                                <div class="row row-margin">
+                                    <div class="col-md-8">
+											<div class="col-lg-3 col-md-3 green">
+												<span>Rut</span>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												{{ form.PV_RUT }}
+											</div>
+                                        <div class="col-lg-3 col-md-3">
+												<span class="error">{{ form.PV_RUT.errors.as_text }}</span>
+											</div>
+										</div>
+                                    </div>
+
+                                <div class="row row-margin">
+                                    <div class="col-md-8">
+											<div class="col-lg-3 col-md-3 green">
+												<span>Nombre</span>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												{{ form.PV_NOMBRE }}
+											</div>
+                                        <div class="col-lg-3 col-md-3">
+												<span class="error">{{ form.PV_NOMBRE.errors.as_text }}</span>
+											</div>
+										</div>
+                                    </div>
+
+
+
+
+
+                              <div class="row row-margin">
+                                    <div class="col-md-8">
+											<div class="col-lg-3 col-md-3 green">
+												<span>Direccion</span>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												{{ form.PV_DIRECCION }}
+											</div>
+                                        <div class="col-lg-3 col-md-3">
+												<span class="error">{{ form.PV_DIRECCION.errors.as_text }}</span>
+											</div>
+										</div>
+                                    </div>
+
+
+
+                                 <div class="row row-margin">
+                                    <div class="col-md-8">
+											<div class="col-lg-3 col-md-3 green">
+												<span>Telefono</span>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												{{ form.PV_FONO }}
+											</div>
+                                        <div class="col-lg-3 col-md-3">
+												<span class="error">{{ form.PV_FONO.errors.as_text }}</span>
+											</div>
+										</div>
+                                    </div>
+
+                                <div class="row row-margin">
+                                    <div class="col-md-8">
+											<div class="col-lg-3 col-md-3 green">
+												<span>Email</span>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												{{ form.PV_MAIL }}
+											</div>
+                                        <div class="col-lg-3 col-md-3">
+												<span class="error">{{ form.PV_MAIL.errors.as_text }}</span>
+											</div>
+										</div>
+                                    </div>
+
+                               <!-- {{  form.PV_FECHA.value.day }}-->
+
+                                <div class="row row-margin">
+                                    <div class="col-md-8">
+											<div class="col-lg-3 col-md-3 green">
+												<span>Fecha</span>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												{{ form.PV_FECHA }}
+											</div>
+                                        <div class="col-lg-3 col-md-3">
+												<span class="error">{{ form.PV_FECHA.errors.as_text}}</span>
+											</div>
+										</div>
+                                    </div>
+
+                                <div class="row row-margin">
+                                    <div class="col-md-8">
+											<div class="col-lg-3 col-md-3 green">
+												<span>Venta</span>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												{{ form.PV_VENTA }}
+											</div>
+                                        <div class="col-lg-3 col-md-3">
+												<span class="error">{{ form.PV_VENTA.errors.as_text }}</span>
+											</div>
+										</div>
+                                    </div>
+
+
+
+
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                </div>
+                            </fieldset>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <!--/col-->
+
+        </div>
+
+{% endblock %}

@@ -1,0 +1,223 @@
+{% extends '../layouts/base.html' %}
+{% load static %}
+{% load tipodoc %}
+{% block scripts %}
+     <script src="{% static 'js/file_validation.js' %}" type="text/javascript"></script>
+{% endblock %}
+
+{% block content %}
+    <form method="post" id="form_comunidad" novalidate="novalidate" action="/comunidades/create" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.CM_ID }}
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h2><i class="icon-edit"></i>Comunidades</h2>
+                        <a href='/comunidades' class="btn btn-danger pull-right btn-lg">Volver</a>
+                    </div>
+                    <div class="box-content">
+                        <form class="form-horizontal">
+                            <fieldset class="col-sm-12">
+<div class="row row-margin">
+                                    <div class="col-md-8">
+											<div class="col-lg-3 col-md-3 green">
+												<span>Nombre Comunidad</span>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												{{ form.CM_NOMBRE }}
+											</div>
+                                        <div class="col-lg-3 col-md-3">
+												<span class="error">{{ form.CM_NOMBRE.errors.as_text }}</span>
+											</div>
+										</div>
+                                    </div>
+
+
+                                <div class="row row-margin">
+                                    <div class="col-md-8">
+											<div class="col-lg-3 col-md-3 green">
+												<span>Pais</span>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												{{ form.paises }}
+											</div>
+                                        <div class="col-lg-3 col-md-3">
+												<span class="error">{{ form.paises.errors.as_text }}</span>
+											</div>
+										</div>
+                                    </div>
+
+
+                               <div class="row row-margin">
+                                    <div class="col-md-8">
+											<div class="col-lg-3 col-md-3 green">
+												<span>Cantidad Equipos</span>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												{{ form.CM_NUMEQUIPOS }}
+											</div>
+                                        <div class="col-lg-3 col-md-3">
+												<span class="error">{{ form.CM_NUMEQUIPOS.errors.as_text }}</span>
+											</div>
+										</div>
+                                    </div>
+
+                                <div class="row row-margin">
+                                    <div class="col-md-8">
+											<div class="col-lg-3 col-md-3 green">
+												<span>Cantidad Casas</span>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												{{ form.CM_CASAS }}
+											</div>
+                                        <div class="col-lg-3 col-md-3">
+												<span class="error">{{ form.CM_CASAS.errors.as_text }}</span>
+											</div>
+										</div>
+                                    </div>
+
+                              <div class="row row-margin">
+                                    <div class="col-md-8">
+											<div class="col-lg-3 col-md-3 green">
+												<span>Cantidad Tiendas</span>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												{{ form.CM_TIENDAS }}
+											</div>
+                                        <div class="col-lg-3 col-md-3">
+												<span class="error">{{ form.CM_TIENDAS.errors.as_text }}</span>
+											</div>
+										</div>
+                                    </div>
+
+                               <div class="row row-margin">
+                                    <div class="col-md-8">
+											<div class="col-lg-3 col-md-3 green">
+												<span>Cantidad Edificios</span>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												{{ form.CM_EDIFICIOS }}
+											</div>
+                                        <div class="col-lg-3 col-md-3">
+												<span class="error">{{ form.CM_EDIFICIOS.errors.as_text }}</span>
+											</div>
+										</div>
+                                    </div>
+
+                                <div class="row row-margin">
+                                    <div class="col-md-8">
+											<div class="col-lg-3 col-md-3 green">
+												<span>Firmado</span>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												{{ form.CM_FIRMADO }}
+											</div>
+                                        <div class="col-lg-3 col-md-3">
+												<span class="error">{{ form.CM_FIRMADO.errors.as_text }}</span>
+											</div>
+										</div>
+                                    </div>
+
+                                <div class="row row-margin">
+                                    <div class="col-md-8">
+											<div class="col-lg-3 col-md-3 green">
+												<span>Reervado</span>
+											</div>
+											<div class="col-lg-6 col-md-6">
+												{{ form.CM_RESERVADO }}
+											</div>
+                                        <div class="col-lg-3 col-md-3">
+												<span class="error">{{ form.CM_RESERVADO.errors.as_text }}</span>
+											</div>
+										</div>
+                                    </div>
+
+                            <div class="row row-margin">
+                                    <div class="col-md-8">
+                                    <div class="alert alert-info">
+                                       <strong>Atencion!</strong> Solo archivos de extension doc ,docx y pdf
+                                     </div>
+                                    </div>
+                            </div>
+
+                                 <div class="row row-margin">
+                                    <div class="col-md-9">
+											<div class="col-lg-3 col-md-3 green">
+												<span>Acta donación con comité</span>
+											</div>
+											<div class="col-lg-6 col-md-4">
+												{{ form.CM_DOC_DONACION_COMITE }}
+											</div>
+                                        <div class="col-lg-3 col-md-5">
+                                            {% if form.instance.CM_DOC_DONACION_COMITE != None and  form.instance.CM_DOC_DONACION_COMITE != ''  %}
+
+                                                     <a target="_blank" href="{% static 'upload/acta donacion con comite'%}/{{ form.instance.CM_DOC_DONACION_COMITE }}">
+                                                    {% icon_doc form.instance.CM_DOC_DONACION_COMITE  as a %} {{ a|safe }} </a>
+                                                     </a>
+
+                                            {% endif %}
+												<span class="error">{{ form.CM_DOC_DONACION_COMITE.errors.as_text }}</span>
+											</div>
+										</div>
+                                    </div>
+
+                                <div class="row row-margin">
+                                    <div class="col-md-9">
+											<div class="col-lg-3 col-md-3 green">
+												<span>Contrato mantención</span>
+											</div>
+											<div class="col-lg-6 col-md-4">
+
+												{{ form.CM_DOC_CMI }}
+											</div>
+                                        <div class="col-lg-3 col-md-5" style="height: 30px">
+                                            {% if form.instance.CM_DOC_CMI != None and  form.instance.CM_DOC_CMI != ''  %}
+                                                <a target="_blank" href="{% static 'upload/contrato mantencion ingeniera'%}/{{ form.instance.CM_DOC_CMI }}">
+                                                      {% icon_doc form.instance.CM_DOC_CMI  as a %} {{ a|safe }}
+                                                </a>
+                                            {% endif %}
+												<span class="error">{{ form.CM_DOC_CMI.errors.as_text }}</span>
+											</div>
+										</div>
+                                    </div>
+
+
+
+
+                                <div class="row row-margin">
+                                    <div class="col-md-9">
+											<div class="col-lg-3 col-md-3 green">
+												<span>Contrato de personalidad</span>
+											</div>
+											<div class="col-lg-6 col-md-4">
+												{{ form.CM_DOC_CUENTA_BANCARIA }}
+											</div>
+                                        <div class="col-lg-3 col-md-5">
+                                            {% if form.instance.CM_DOC_CUENTA_BANCARIA != None and  form.instance.CM_DOC_CUENTA_BANCARIA != ''  %}
+                                                     <a target="_blank" href="{% static 'upload/contrato de personalidad juridica' %}/{{ form.instance.CM_DOC_CUENTA_BANCARIA }}">
+                                                     {% icon_doc form.instance.CM_DOC_CUENTA_BANCARIA  as a %} {{ a|safe }}
+                                                     </a>
+                                            {% endif %}
+												<span class="error">{{ form.CM_DOC_CUENTA_BANCARIA.errors.as_text }}</span>
+											</div>
+										</div>
+                                    </div>
+
+
+
+
+                                <div class="form-actions">
+                                    <input id="submit_btn" type="button" class="btn btn-primary" value="Guardar"/>
+                                </div>
+                            </fieldset>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <!--/col-->
+
+        </div>
+
+{% endblock %}

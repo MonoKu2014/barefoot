@@ -1,0 +1,66 @@
+{% extends '../layouts/base.html' %}
+{% load static %}
+{% block content %}
+    {% load submodulos_match %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="box">
+                <div class="box-header" data-original-title="">
+                    <h2><i class="icon-user"></i><span class="break">Permisos</span></h2>
+                    <a href='/roles' class="btn btn-danger pull-right btn-lg">Volver</a>
+                </div>
+                <div class="box-content">
+                 <div class="form-actions">
+									<button type="button" id="save_sup" class="btn btn-primary">Guardar</button>
+                                     <button type="button" id="all_sup" class="btn btn-success">Seleccionar Todos</button>
+                                      <button type="button" id="nothing_sup" class="btn btn-danger">Deseleccionar Todos</button>
+                 </div>
+                    <table class="table table-striped">
+                        <thead>
+                            <td>#</td>
+                            <td>Nombre Modulo</td>
+                            <td>Crear</td>
+                            <td>Actualizar</td>
+                            <td>Borrar</td>
+                            <td>PDF</td>
+                            <td>Excel</td>
+                            <td>Asignar</td>
+                        </thead>
+                        <tbody>
+                          {% for m in modulos %}
+                        <tr>
+                           <td colspan="8" style="background-color: #00a275;color: white">{{ m.nombre }}</td>
+                        </tr>
+                            {% for s in m.submodulo_model_set.all %}
+                        <tr>
+                           <td>{{ s.id }}</td>
+                           <td>{{ s.nombre }}</td>
+                           <td><div class="togglebutton"><label>{% submodule_match roles s 'create'  as res %}{{ res|safe }}<span class="toggle"></span></label></div></td>
+                           <td><div class="togglebutton"><label>{% submodule_match roles s 'update'  as res  %}{{ res|safe }}<span class="toggle"></span></label></div></td>
+                           <td><div class="togglebutton"><label>{% submodule_match roles s 'delete'  as res %}{{ res|safe }}<span class="toggle"></span></label></div></td>
+                           <td><div class="togglebutton"><label>{% submodule_match roles s 'pdf'   as res %}{{ res|safe }}<span class="toggle"></span></label></div></td>
+                           <td><div class="togglebutton"><label>{% submodule_match roles s 'excel'  as res %}{{ res|safe }}<span class="toggle"></span></label></div></td>
+                           <td><div class="togglebutton"><label>{% submodule_match roles s 'assign'  as res %}{{ res|safe }}<span class="toggle"></span></label></div></td>
+                        </tr>
+                            {% endfor %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                <form method="POST" id="formulario_final">
+                    {% csrf_token %}
+                    <input type="hidden" name="submodulos_ids" id="submodulos_ids" />
+                    <input type="hidden" name="rol_id" value="{{ rol_id }}"/>
+                </form>
+
+  </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+
+   <script src="{% static 'js/submodulos.js' %}" type="text/javascript"></script>
+{% endblock %}
